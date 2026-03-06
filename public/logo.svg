@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none">
+  <!-- Red PS text -->
+  <text x="10" y="55" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="52" fill="#DC2626" letter-spacing="-2">PS</text>
+  <!-- Yellow swoosh under PS -->
+  <path d="M8 62 C30 58, 60 54, 90 58 C100 60, 105 62, 108 60" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Company name -->
+  <text x="95" y="30" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="#DC2626">P.S. MEDIAS SUPPLY</text>
+  <text x="95" y="44" font-family="Arial, sans-serif" font-weight="700" font-size="10" fill="#DC2626">CO., LTD.</text>
+  <!-- Tagline -->
+  <text x="95" y="60" font-family="Arial, sans-serif" font-weight="400" font-size="7" fill="#525252">Computer Form</text>
+  <text x="95" y="72" font-family="Arial, sans-serif" font-weight="400" font-size="6" fill="#737373">โรงพิมพ์แบบฟอร์ม 3,4,5,6 ชั้น คุณภาพดี</text>
+</svg>

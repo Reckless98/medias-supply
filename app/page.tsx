@@ -1,65 +1,344 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import ServiceCard from "@/components/ServiceCard";
+import Link from "next/link";
 
-export default function Home() {
+const services = [
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    ),
+    title: "งานพิมพ์คอมพิวเตอร์ฟอร์ม",
+    description: "รับพิมพ์กระดาษต่อเนื่องคอมพิวเตอร์ทุกชนิด คุณภาพสูง ตรงเวลา",
+    items: ["ใบเสร็จรับเงิน", "ใบกำกับภาษี", "ใบวางบิล", "กระดาษต่อเนื่อง", "กระดาษเคมีเปล่า"],
+    href: "/services/forms",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+      </svg>
+    ),
+    title: "งานพิมพ์ออฟเซ็ท",
+    description: "รับพิมพ์งานระบบออฟเซ็ททุกชนิด พร้อมเคลือบเงา ยูวี",
+    items: ["หนังสือ", "โบรชัวร์", "สมุด", "ถุงกระดาษ", "กล่องบรรจุภัณฑ์", "งานเคลือบลามิเนต"],
+    href: "/services/offset",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+      </svg>
+    ),
+    title: "งานพิมพ์สติ๊กเกอร์",
+    description: "งานพิมพ์สติ๊กเกอร์ทุกชนิด ทั้งแบบม้วนและแบบ Sheet",
+    items: ["สติ๊กเกอร์ม้วน", "สติ๊กเกอร์แผ่น", "ฉลากสินค้า", "งานพิมพ์ฉลากทุกประเภท"],
+    href: "/services/stickers",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    ),
+    title: "งานพิมพ์แบบฟอร์มธุรกิจ",
+    description: "รับออกแบบและจัดพิมพ์แบบฟอร์มต่อเนื่องบนกระดาษคอมพิวเตอร์ทุกขนาด",
+    items: ["อินวอยซ์ (Invoice)", "ใบส่งของ / ใบแจ้งหนี้", "ใบกำกับภาษี", "ใบจ่ายเงินเดือนพนักงาน", "หนังสือรับรองการหักภาษี"],
+    href: "/services/invoice",
+  },
+];
+
+const whyChooseUs = [
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "งานดีมีคุณภาพ",
+    description: "รับรองคุณภาพและผลงาน แบบฟอร์มมีมาตรฐาน บริการเยี่ยม เปี่ยมคุณภาพ",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "ตรงต่อเวลา",
+    description: "ส่งมอบงานตรงตามนัดหมาย ไม่เคยผิดนัด ลูกค้าวางใจได้",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "ราคายุติธรรม",
+    description: "ราคาเป็นกันเอง คุ้มค่าทุกบาท ไม่มีค่าใช้จ่ายซ่อนเร้น",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+      </svg>
+    ),
+    title: "ซื่อสัตย์",
+    description: "ดำเนินธุรกิจด้วยความซื่อสัตย์ จริงใจกับลูกค้าทุกราย เป็นที่ไว้วางใจ",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+    title: "เทคโนโลยีทันสมัย",
+    description: "ใช้เครื่องพิมพ์และเทคโนโลยีที่ทันสมัย เพื่อผลงานที่ดีที่สุด",
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>
+    ),
+    title: "บริการครบวงจร",
+    description: "ตั้งแต่ออกแบบ พิมพ์ ไดคัท เคลือบ เจาะ จนถึงจัดส่ง ครบจบที่เดียว",
+  },
+];
+
+const paperTypes = [
+  { size: "กระดาษต่อเนื่อง 9\" x 11\"", layers: ["1 ชั้น", "2 ชั้น", "3 ชั้น", "4 ชั้น"] },
+  { size: "กระดาษเคมีเปล่า (Carbonless)", layers: ["2 ชั้น", "3 ชั้น", "4 ชั้น", "5 ชั้น", "6 ชั้น", "7 ชั้น"] },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Services Section */}
+      <section className="py-16 lg:py-24 bg-neutral-50" id="services">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-16">
+            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+              ยินดีให้บริการ
+            </span>
+            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+              บริการงานพิมพ์ครบทุกรูปแบบ
+            </h2>
+            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+              เราให้บริการงานพิมพ์หลากหลายประเภท ด้วยเทคโนโลยีที่ทันสมัย
+              เพื่อตอบโจทย์ทุกความต้องการของธุรกิจคุณ
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+            {services.map((service, index) => (
+              <ServiceCard key={index} {...service} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Paper Types Section */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-16">
+            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+              จำหน่าย
+            </span>
+            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+              กระดาษต่อเนื่องและกระดาษเคมี
+            </h2>
+            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+              ใช้กระดาษชนิดเกรด A ติดชัดทุกใบ กระดาษเคมีต่างสี (Carbonless) คุณภาพดี
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {paperTypes.map((paper, index) => (
+              <div
+                key={index}
+                className="bg-neutral-50 rounded-2xl p-6 lg:p-8 border border-neutral-100"
+              >
+                <h3 className="text-xl font-bold text-neutral-900 mb-4">
+                  {paper.size}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {paper.layers.map((layer, lIndex) => (
+                    <span
+                      key={lIndex}
+                      className="px-4 py-2 bg-white rounded-lg text-sm font-medium text-neutral-700 border border-neutral-200 shadow-sm"
+                    >
+                      {layer}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About / Company Introduction */}
+      <section className="py-16 lg:py-24 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                เกี่ยวกับเรา
+              </span>
+              <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+                ผู้ผลิตและผู้เชี่ยวชาญ
+                <br />
+                <span className="text-primary">ด้านงานพิมพ์คุณภาพ</span>
+              </h2>
+              <p className="mt-6 text-neutral-600 leading-relaxed">
+                บริษัท พี.เอส. มีเดียส์ ซัพพลาย จำกัด
+                เป็นผู้ผลิตที่เชี่ยวชาญด้านการรับออกแบบและจัดพิมพ์แบบฟอร์มต่อเนื่อง
+                บนกระดาษคอมพิวเตอร์ทุกขนาด ด้วยประสบการณ์ยาวนาน
+                เรามุ่งมั่นส่งมอบงานพิมพ์คุณภาพสูงที่ตอบโจทย์ธุรกิจของลูกค้า
+              </p>
+              <p className="mt-4 text-neutral-600 leading-relaxed">
+                ไม่ว่าจะเป็นงานพิมพ์คอมพิวเตอร์ฟอร์ม งานพิมพ์ออฟเซ็ท
+                สติ๊กเกอร์ หรืองานเคลือบลามิเนต งานเจาะเว้นช่องหน้าต่าง
+                เราพร้อมให้บริการด้วยทีมงานมืออาชีพ
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-6">
+                <div className="bg-primary-light/50 rounded-xl p-4">
+                  <p className="text-3xl font-bold text-primary">20+</p>
+                  <p className="text-sm text-neutral-600 mt-1">ปีประสบการณ์</p>
+                </div>
+                <div className="bg-secondary-light/50 rounded-xl p-4">
+                  <p className="text-3xl font-bold text-secondary-dark">1,000+</p>
+                  <p className="text-sm text-neutral-600 mt-1">ลูกค้าที่ไว้วางใจ</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="bg-white rounded-2xl aspect-square lg:aspect-[4/3] flex items-center justify-center overflow-hidden border border-neutral-100 shadow-sm">
+                <div className="text-center p-8">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                  </div>
+                  <p className="text-neutral-800 font-bold text-lg">P.S. MEDIAS SUPPLY</p>
+                  <p className="text-neutral-500 text-sm mt-1">รับรองคุณภาพและผลงาน</p>
+                  <p className="text-secondary font-medium text-sm mt-3">แบบฟอร์มมีมาตรฐาน บริการเยี่ยม เปี่ยมคุณภาพ</p>
+                </div>
+              </div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-2xl -z-10" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-16">
+            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+              ทำไมต้องเลือกเรา
+            </span>
+            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+              งานดีมีคุณภาพ ซื่อสัตย์ ตรงต่อเวลา ราคายุติธรรม
+            </h2>
+            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+              ความไว้วางใจจากลูกค้ากว่า 1,000 ราย เป็นเครื่องยืนยันคุณภาพของเรา
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+            {whyChooseUs.map((item, index) => (
+              <div
+                key={index}
+                className="bg-neutral-50 rounded-2xl p-6 lg:p-8 border border-neutral-100 hover:shadow-lg hover:border-primary/10 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 text-primary">
+                  {item.icon}
+                </div>
+                <h3 className="text-lg font-bold text-neutral-900 mb-2">{item.title}</h3>
+                <p className="text-neutral-600 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio / Products showcase */}
+      <section className="py-16 lg:py-24 bg-neutral-50" id="portfolio">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-16">
+            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+              ผลงานของเรา
+            </span>
+            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+              ตัวอย่างผลิตภัณฑ์
+            </h2>
+            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+              งานพิมพ์คุณภาพจากลูกค้าที่ไว้วางใจเรา
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+            {[
+              "ใบเสร็จรับเงิน",
+              "ใบกำกับภาษี",
+              "อินวอยซ์ (Invoice)",
+              "ใบส่งของ",
+              "สติ๊กเกอร์สินค้า",
+              "โบรชัวร์",
+              "กล่องบรรจุภัณฑ์",
+              "ใบจ่ายเงินเดือน",
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl aspect-square flex items-center justify-center hover:bg-primary-light/30 transition-colors group cursor-pointer border border-neutral-100 shadow-sm"
+              >
+                <div className="text-center p-4">
+                  <div className="w-12 h-12 bg-neutral-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/10 group-hover:shadow-md transition-all">
+                    <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <p className="text-neutral-600 text-sm font-medium">{item}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-16 lg:py-24 bg-linear-to-br from-primary to-primary-dark text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            ต้องการงานพิมพ์? ติดต่อเราวันนี้
+          </h2>
+          <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            เรายินดีให้คำปรึกษาและเสนอราคาสำหรับงานพิมพ์ทุกประเภท ไม่มีค่าใช้จ่ายในการเสนอราคา
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-neutral-50 transition-colors shadow-lg"
+            >
+              ขอใบเสนอราคาฟรี
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <a
+              href="tel:0819226779"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary text-neutral-900 font-semibold rounded-xl hover:bg-secondary-dark transition-colors shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              โทร 081-922-6779
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
