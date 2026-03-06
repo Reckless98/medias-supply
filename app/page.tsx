@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
-import Link from "next/link";
+import QuoteForm from "@/components/QuoteForm";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const services = [
   {
@@ -268,42 +269,97 @@ export default function HomePage() {
       {/* Portfolio / Products showcase */}
       <section className="py-16 lg:py-24 bg-neutral-50" id="portfolio">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
-              ผลงานของเรา
-            </span>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
-              ตัวอย่างผลิตภัณฑ์
-            </h2>
-            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
-              งานพิมพ์คุณภาพจากลูกค้าที่ไว้วางใจเรา
-            </p>
-          </div>
+          <AnimateOnScroll animation="fade-up">
+            <div className="text-center mb-12 lg:mb-16">
+              <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                ผลงานของเรา
+              </span>
+              <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+                ตัวอย่างผลิตภัณฑ์
+              </h2>
+              <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+                งานพิมพ์คุณภาพจากลูกค้าที่ไว้วางใจเรา
+              </p>
+            </div>
+          </AnimateOnScroll>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {[
-              "ใบเสร็จรับเงิน",
-              "ใบกำกับภาษี",
-              "อินวอยซ์ (Invoice)",
-              "ใบส่งของ",
-              "สติ๊กเกอร์สินค้า",
-              "โบรชัวร์",
-              "กล่องบรรจุภัณฑ์",
-              "ใบจ่ายเงินเดือน",
+              { name: "ใบเสร็จรับเงิน", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
+              { name: "ใบกำกับภาษี", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" },
+              { name: "อินวอยซ์ (Invoice)", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" },
+              { name: "ใบส่งของ", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
+              { name: "สติ๊กเกอร์สินค้า", icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z" },
+              { name: "โบรชัวร์", icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" },
+              { name: "กล่องบรรจุภัณฑ์", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
+              { name: "ใบจ่ายเงินเดือน", icon: "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" },
             ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl aspect-square flex items-center justify-center hover:bg-primary-light/30 transition-colors group cursor-pointer border border-neutral-100 shadow-sm"
-              >
-                <div className="text-center p-4">
-                  <div className="w-12 h-12 bg-neutral-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/10 group-hover:shadow-md transition-all">
-                    <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
+              <AnimateOnScroll key={index} animation="scale-in" delay={index * 60}>
+                <div className="bg-white rounded-2xl aspect-square flex items-center justify-center hover:bg-primary-light/30 transition-colors group cursor-pointer border border-neutral-100 shadow-sm">
+                  <div className="text-center p-4">
+                    <div className="w-12 h-12 bg-neutral-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/10 group-hover:shadow-md transition-all">
+                      <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
+                      </svg>
+                    </div>
+                    <p className="text-neutral-600 text-sm font-medium">{item.name}</p>
                   </div>
-                  <p className="text-neutral-600 text-sm font-medium">{item}</p>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quote Section */}
+      <section id="quote" className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <AnimateOnScroll animation="fade-right">
+              <div>
+                <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                  ขอใบเสนอราคา
+                </span>
+                <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+                  รับใบเสนอราคาฟรี
+                </h2>
+                <p className="text-neutral-600 leading-relaxed mb-8">
+                  กรอกข้อมูลด้านล่าง เราจะติดต่อกลับพร้อมใบเสนอราคาภายใน 24 ชั่วโมง
+                  ไม่มีค่าใช้จ่ายในการเสนอราคา
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-primary shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <div>
+                      <a href="tel:0819226779" className="text-neutral-900 font-semibold hover:text-primary transition-colors">081-922-6779</a>
+                      <span className="text-neutral-400 mx-2">|</span>
+                      <a href="tel:0803406923" className="text-neutral-900 font-semibold hover:text-primary transition-colors">080-340-6923</a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-primary shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <a href="mailto:psmedia65@gmail.com" className="text-neutral-900 font-semibold hover:text-primary transition-colors">psmedia65@gmail.com</a>
+                  </div>
+                  <a
+                    href="https://line.me/R/ti/p/@psmediassupply"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-5 py-3 bg-[#06C755] text-white rounded-xl font-semibold hover:brightness-110 transition-all text-sm mt-2"
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386a.63.63 0 01-.63-.629V8.108a.63.63 0 01.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 01-.63.629.626.626 0 01-.51-.262l-2.397-3.274v2.906a.63.63 0 01-.629.63.63.63 0 01-.63-.63V8.108a.63.63 0 01.63-.63c.2 0 .385.096.504.259l2.397 3.274V8.108a.63.63 0 011.265 0v4.771zm-5.741 0a.63.63 0 01-1.26 0V8.108a.63.63 0 011.26 0v4.771zm-2.451.63H4.932a.63.63 0 01-.63-.63V8.108a.63.63 0 011.261 0v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.63-.629.63M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" /></svg>
+                    แชทผ่าน LINE
+                  </a>
                 </div>
               </div>
-            ))}
+            </AnimateOnScroll>
+            <AnimateOnScroll animation="fade-left">
+              <div className="bg-neutral-50 border border-neutral-100 rounded-2xl p-6 lg:p-8 shadow-sm">
+                <QuoteForm />
+              </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </section>
@@ -318,15 +374,15 @@ export default function HomePage() {
             เรายินดีให้คำปรึกษาและเสนอราคาสำหรับงานพิมพ์ทุกประเภท ไม่มีค่าใช้จ่ายในการเสนอราคา
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
+            <a
+              href="#quote"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-neutral-50 transition-colors shadow-lg"
             >
               ขอใบเสนอราคาฟรี
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
+            </a>
             <a
               href="tel:0819226779"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary text-neutral-900 font-semibold rounded-xl hover:bg-secondary-dark transition-colors shadow-lg"
