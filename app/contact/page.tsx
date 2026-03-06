@@ -147,10 +147,10 @@ export default function ContactPage() {
                   ด้วยประสบการณ์มากกว่า 20 ปี
                 </p>
                 <Link
-                  href="/#quote"
+                  href="/contact"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
                 >
-                  ขอใบเสนอราคาฟรี
+                  ดูบริการของเรา
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -170,6 +170,34 @@ export default function ContactPage() {
                 <ContactForm />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Google Maps */}
+      <section className="py-16 lg:py-24 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-primary text-sm font-semibold">แผนที่</span>
+            <h2 className="mt-2 text-2xl lg:text-3xl font-bold text-neutral-900">
+              สถานที่ตั้งของเรา
+            </h2>
+            <p className="mt-3 text-neutral-600 max-w-xl mx-auto">
+              68 ซอยงามวงศ์วาน 18 แยก 6/7 ต.บางเขน อ.เมืองนนทบุรี จ.นนทบุรี 11000
+            </p>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-neutral-200 shadow-sm">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.0!2d100.5!3d13.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDUxJzAwLjAiTiAxMDDCsDMwJzAwLjAiRQ!5e0!3m2!1sth!2sth!4v1700000000000"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="P.S. MEDIAS SUPPLY CO., LTD. - แผนที่"
+              className="w-full"
+            />
           </div>
         </div>
       </section>

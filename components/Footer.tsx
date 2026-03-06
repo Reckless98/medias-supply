@@ -118,6 +118,24 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Google Maps */}
+        <div className="pb-8">
+          <h3 className="font-semibold text-sm mb-4 text-secondary">สถานที่ตั้ง</h3>
+          <div className="rounded-xl overflow-hidden border border-neutral-700">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.0!2d100.5!3d13.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDUxJzAwLjAiTiAxMDDCsDMwJzAwLjAiRQ!5e0!3m2!1sth!2sth!4v1700000000000"
+              width="100%"
+              height="200"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="P.S. MEDIAS SUPPLY CO., LTD. - แผนที่"
+              className="w-full"
+            />
+          </div>
+        </div>
+
         {/* Bottom bar */}
         <div className="border-t border-neutral-800 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-neutral-500 text-xs">

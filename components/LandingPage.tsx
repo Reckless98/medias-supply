@@ -1,5 +1,4 @@
 import Link from "next/link";
-import QuoteForm from "@/components/QuoteForm";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 interface Product {
@@ -80,15 +79,15 @@ export default function LandingPage({
               งานดีมีคุณภาพ ซื่อสัตย์ ตรงต่อเวลา ราคายุติธรรม
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#quote-form"
+              <Link
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/25"
               >
                 {ctaText}
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
+              </Link>
               <a
                 href="tel:0819226779"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-secondary text-neutral-900 font-semibold rounded-xl hover:bg-secondary-dark transition-all duration-300"
@@ -173,7 +172,7 @@ export default function LandingPage({
         </div>
       </section>
 
-      {/* Quote Form */}
+      {/* Contact CTA */}
       <section id="quote-form" className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -183,7 +182,7 @@ export default function LandingPage({
                   ขอใบเสนอราคา{keyword}
                 </h2>
                 <p className="text-neutral-600 leading-relaxed mb-6">
-                  กรอกข้อมูลด้านล่าง เราจะติดต่อกลับพร้อมใบเสนอราคาภายใน 24 ชั่วโมง
+                  ติดต่อเราวันนี้เพื่อรับใบเสนอราคาฟรี เราจะติดต่อกลับภายใน 24 ชั่วโมง
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
@@ -222,8 +221,25 @@ export default function LandingPage({
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll animation="fade-left">
-              <div className="bg-white border border-neutral-100 rounded-2xl p-6 lg:p-8 shadow-sm">
-                <QuoteForm />
+              <div className="bg-white border border-neutral-100 rounded-2xl p-8 lg:p-10 shadow-sm text-center">
+                <div className="w-16 h-16 bg-primary-light rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-neutral-900 mb-3">ส่งข้อความถึงเรา</h3>
+                <p className="text-neutral-600 text-sm mb-6">
+                  กรอกข้อมูลในแบบฟอร์มติดต่อ เราจะตอบกลับโดยเร็วที่สุด
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 w-full px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/25"
+                >
+                  ไปยังหน้าติดต่อเรา
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
               </div>
             </AnimateOnScroll>
           </div>

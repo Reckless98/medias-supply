@@ -57,8 +57,12 @@ export default function StickersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-linear-to-br from-neutral-900 to-neutral-800 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-linear-to-br from-neutral-900 via-neutral-800 to-neutral-900 py-20 lg:py-32">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary rounded-full blur-3xl -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary rounded-full blur-3xl translate-y-1/2 translate-x-1/2" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <Link
               href="/"
@@ -69,51 +73,83 @@ export default function StickersPage() {
               </svg>
               กลับหน้าแรก
             </Link>
-            <span className="text-primary text-sm font-semibold">บริการ</span>
-            <h1 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-              งานพิมพ์สติ๊กเกอร์
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full mb-6">
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <span className="text-primary text-xs font-medium">สติ๊กเกอร์ &amp; ฉลาก</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+              งานพิมพ์สติ๊กเกอร์คุณภาพสูง
             </h1>
-            <p className="mt-4 text-neutral-300 text-lg leading-relaxed">
-              สติ๊กเกอร์คุณภาพสูง ทนทาน สีสันสดใส
-              เหมาะสำหรับติดสินค้าทุกประเภท ด้วยวัสดุหลากหลายให้เลือก
+            <p className="mt-4 text-neutral-300 text-lg leading-relaxed max-w-2xl">
+              สติ๊กเกอร์ทนทาน สีสันสดใส เหมาะสำหรับติดสินค้าทุกประเภท
+              ด้วยวัสดุหลากหลายให้เลือก รองรับทั้งสติ๊กเกอร์ม้วน สติ๊กเกอร์แผ่น และฉลากสินค้า
             </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {["ทนน้ำ ทนแดด", "พิมพ์คมชัด", "ไดคัทตามรูปทรง", "วัสดุหลากหลาย"].map((tag) => (
+                <span key={tag} className="px-3 py-1.5 bg-white/10 border border-white/20 rounded-full text-white text-xs font-medium">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Sticker Types */}
+      {/* Sticker Types - Alternating Cards */}
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-8">
-              ประเภทสติ๊กเกอร์
-            </h2>
+            <div className="text-center mb-14">
+              <span className="text-primary text-sm font-semibold tracking-wide uppercase">ประเภทสติ๊กเกอร์</span>
+              <h2 className="mt-3 text-2xl lg:text-3xl font-bold text-neutral-900">
+                เลือกสติ๊กเกอร์ที่เหมาะกับสินค้าของคุณ
+              </h2>
+              <p className="mt-3 text-neutral-600 max-w-2xl mx-auto">
+                เรามีสติ๊กเกอร์หลากหลายรูปแบบ ตอบโจทย์การใช้งานทุกประเภท
+              </p>
+            </div>
           </AnimateOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="space-y-8">
             {stickerTypes.map((sticker, index) => (
-              <AnimateOnScroll key={index} animation="fade-up" delay={index * 100}>
-                <div className="bg-white border border-neutral-100 rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 transition-all duration-300 h-full">
-                  <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4">
-                    <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={sticker.icon} />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-neutral-900 mb-2">
-                    {sticker.title}
-                  </h3>
-                  <p className="text-neutral-600 leading-relaxed mb-4">
-                    {sticker.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {sticker.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-center gap-2 text-sm text-neutral-600">
-                        <svg className="w-4 h-4 text-secondary shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <AnimateOnScroll key={index} animation={index % 2 === 0 ? "fade-right" : "fade-left"} delay={index * 60}>
+                <div className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} bg-white rounded-2xl border border-neutral-100 shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300`}>
+                  {/* Visual Side */}
+                  <div className="lg:w-2/5 bg-linear-to-br from-primary/5 to-secondary/5 p-8 lg:p-10 flex flex-col justify-center">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-14 h-14 bg-white rounded-2xl shadow-md flex items-center justify-center shrink-0">
+                        <svg className="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={sticker.icon} />
                         </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                      </div>
+                      <span className="text-5xl font-black text-primary/10">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3">
+                      {sticker.title}
+                    </h3>
+                    <p className="text-neutral-600 leading-relaxed">
+                      {sticker.description}
+                    </p>
+                  </div>
+                  {/* Features Side */}
+                  <div className="lg:w-3/5 p-6 lg:p-10 flex items-center">
+                    <div className="w-full space-y-3">
+                      {sticker.features.map((feature, fIndex) => (
+                        <div
+                          key={fIndex}
+                          className="flex items-start gap-3 bg-neutral-50 rounded-xl p-4 border border-neutral-100"
+                        >
+                          <div className="w-6 h-6 bg-primary-light rounded-md flex items-center justify-center shrink-0 mt-0.5">
+                            <svg className="w-3.5 h-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="text-neutral-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </AnimateOnScroll>
             ))}
@@ -122,26 +158,29 @@ export default function StickersPage() {
       </section>
 
       {/* Materials */}
-      <section className="py-16 lg:py-24 bg-neutral-50">
+      <section className="py-16 lg:py-24 bg-neutral-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimateOnScroll animation="fade-up">
-            <h2 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-3">
-              วัสดุที่เลือกได้
-            </h2>
-            <p className="text-neutral-600 mb-8">
-              เรามีวัสดุหลากหลายให้เลือก เพื่อตอบโจทย์ทุกการใช้งาน
-            </p>
+            <div className="text-center mb-14">
+              <span className="text-secondary text-sm font-semibold tracking-wide uppercase">วัสดุ</span>
+              <h2 className="mt-3 text-2xl lg:text-3xl font-bold">
+                วัสดุสติ๊กเกอร์ที่เลือกได้
+              </h2>
+              <p className="mt-3 text-neutral-400 max-w-2xl mx-auto">
+                เรามีวัสดุคุณภาพสูงหลากหลายให้เลือก เพื่อตอบโจทย์ทุกการใช้งาน
+              </p>
+            </div>
           </AnimateOnScroll>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {materials.map((material, index) => (
-              <AnimateOnScroll key={index} animation="scale-in" delay={index * 50}>
-                <div className="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm">
-                  <div className="w-8 h-8 bg-primary-light rounded-lg flex items-center justify-center shrink-0">
-                    <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={material.icon} />
+              <AnimateOnScroll key={index} animation="fade-up" delay={index * 80}>
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={material.icon} />
                     </svg>
                   </div>
-                  <span className="text-neutral-700">{material.name}</span>
+                  <p className="text-neutral-200 font-medium">{material.name}</p>
                 </div>
               </AnimateOnScroll>
             ))}
@@ -150,18 +189,20 @@ export default function StickersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 bg-primary text-white">
+      <section className="py-16 lg:py-24 bg-linear-to-br from-primary to-primary-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">สนใจงานพิมพ์สติ๊กเกอร์?</h2>
-          <p className="text-white/80 mb-8">
-            ติดต่อเราเพื่อขอใบเสนอราคา เราพร้อมให้คำปรึกษาฟรี
-          </p>
+          <AnimateOnScroll animation="fade-up">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">สนใจงานพิมพ์สติ๊กเกอร์?</h2>
+            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+              ติดต่อเราได้เลย เราพร้อมออกแบบสติ๊กเกอร์ที่เหมาะกับสินค้าของคุณ
+            </p>
+          </AnimateOnScroll>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/#quote"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-neutral-50 transition-colors shadow-lg"
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-xl hover:bg-neutral-50 transition-colors shadow-lg"
             >
-              ขอใบเสนอราคา
+              ติดต่อเรา
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -170,7 +211,7 @@ export default function StickersPage() {
               href="https://line.me/R/ti/p/@psmediassupply"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#06C755] text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#06C755] text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386a.63.63 0 01-.63-.629V8.108a.63.63 0 01.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 01-.63.629.626.626 0 01-.51-.262l-2.397-3.274v2.906a.63.63 0 01-.629.63.63.63 0 01-.63-.63V8.108a.63.63 0 01.63-.63c.2 0 .385.096.504.259l2.397 3.274V8.108a.63.63 0 011.265 0v4.771zm-5.741 0a.63.63 0 01-1.26 0V8.108a.63.63 0 011.26 0v4.771zm-2.451.63H4.932a.63.63 0 01-.63-.63V8.108a.63.63 0 011.261 0v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.63-.629.63M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" /></svg>
               แชทผ่าน LINE

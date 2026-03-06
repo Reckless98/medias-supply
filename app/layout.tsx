@@ -18,6 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://psmediassupply.com"),
   title: {
     default:
       "P.S. MEDIAS SUPPLY CO., LTD. | โรงพิมพ์ บริการงานพิมพ์ครบวงจร พิมพ์แบบฟอร์ม สติ๊กเกอร์ ออฟเซ็ท",
