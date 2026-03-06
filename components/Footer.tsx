@@ -57,16 +57,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Products */}
           <div>
             <h3 className="font-semibold text-sm mb-4 text-secondary">
-              ลิงก์ด่วน
+              สินค้ายอดนิยม
             </h3>
             <ul className="space-y-2.5">
-              <li><Link href="/" className="text-neutral-400 text-sm hover:text-white transition-colors">หน้าแรก</Link></li>
-              <li><Link href="/#services" className="text-neutral-400 text-sm hover:text-white transition-colors">บริการ</Link></li>
-              <li><Link href="/#portfolio" className="text-neutral-400 text-sm hover:text-white transition-colors">ผลงาน</Link></li>
-              <li><Link href="/contact" className="text-neutral-400 text-sm hover:text-white transition-colors">ติดต่อเรา</Link></li>
+              <li><Link href="/print-receipts" className="text-neutral-400 text-sm hover:text-white transition-colors">พิมพ์ใบเสร็จรับเงิน</Link></li>
+              <li><Link href="/print-tax-invoice" className="text-neutral-400 text-sm hover:text-white transition-colors">พิมพ์ใบกำกับภาษี</Link></li>
+              <li><Link href="/print-stickers" className="text-neutral-400 text-sm hover:text-white transition-colors">พิมพ์สติ๊กเกอร์สินค้า</Link></li>
+              <li><Link href="/print-packaging-box" className="text-neutral-400 text-sm hover:text-white transition-colors">พิมพ์กล่องบรรจุภัณฑ์</Link></li>
+              <li><Link href="/continuous-form-printing" className="text-neutral-400 text-sm hover:text-white transition-colors">พิมพ์กระดาษต่อเนื่อง</Link></li>
+              <li><Link href="/blog" className="text-neutral-400 text-sm hover:text-white transition-colors">บทความ</Link></li>
             </ul>
           </div>
 

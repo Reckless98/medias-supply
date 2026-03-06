@@ -7,7 +7,8 @@ import Image from "next/image";
 const navLinks = [
   { href: "/", label: "หน้าแรก" },
   { href: "/services/forms", label: "บริการ", hasDropdown: true },
-  { href: "#portfolio", label: "ผลงาน" },
+  { href: "/print-receipts", label: "สินค้า", hasDropdown: true, dropdownKey: "products" },
+  { href: "/blog", label: "บทความ" },
   { href: "/contact", label: "ติดต่อเรา" },
 ];
 
@@ -18,9 +19,21 @@ const serviceLinks = [
   { href: "/services/invoice", label: "งานพิมพ์ใบเสร็จ/ใบกำกับภาษี" },
 ];
 
+const productLinks = [
+  { href: "/print-receipts", label: "พิมพ์ใบเสร็จรับเงิน" },
+  { href: "/print-invoices", label: "พิมพ์บิล/ใบแจ้งหนี้" },
+  { href: "/print-tax-invoice", label: "พิมพ์ใบกำกับภาษี" },
+  { href: "/print-stickers", label: "พิมพ์สติ๊กเกอร์สินค้า" },
+  { href: "/print-product-labels", label: "พิมพ์ฉลากสินค้า" },
+  { href: "/print-packaging-box", label: "พิมพ์กล่องบรรจุภัณฑ์" },
+  { href: "/continuous-form-printing", label: "พิมพ์กระดาษต่อเนื่อง" },
+  { href: "/bill-book-printing", label: "พิมพ์บิลเล่ม" },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showServices, setShowServices] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
 
   return (
     <>
@@ -63,48 +76,54 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) =>
-              link.hasDropdown ? (
-                <div
-                  key={link.href}
-                  className="relative"
-                  onMouseEnter={() => setShowServices(true)}
-                  onMouseLeave={() => setShowServices(false)}
-                >
-                  <Link
-                    href={link.href}
-                    className="px-4 py-2 rounded-lg text-sm font-medium text-neutral-700 hover:text-primary hover:bg-primary-light/50 transition-all duration-200 flex items-center gap-1"
+            {navLinks.map((link) => {
+              if (link.hasDropdown) {
+                const isProducts = link.dropdownKey === "products";
+                const isDropdownOpen = isProducts ? showProducts : showServices;
+                const dropdownItems = isProducts ? productLinks : serviceLinks;
+                return (
+                  <div
+                    key={link.href}
+                    className="relative"
+                    onMouseEnter={() => isProducts ? setShowProducts(true) : setShowServices(true)}
+                    onMouseLeave={() => isProducts ? setShowProducts(false) : setShowServices(false)}
                   >
-                    {link.label}
-                    <svg
-                      className={`w-4 h-4 transition-transform ${showServices ? "rotate-180" : ""}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                    <Link
+                      href={link.href}
+                      className="px-4 py-2 rounded-lg text-sm font-medium text-neutral-700 hover:text-primary hover:bg-primary-light/50 transition-all duration-200 flex items-center gap-1"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </Link>
-                  {showServices && (
-                    <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-lg border border-neutral-100 py-2 animate-in fade-in slide-in-from-top-2">
-                      {serviceLinks.map((sLink) => (
-                        <Link
-                          key={sLink.href}
-                          href={sLink.href}
-                          className="block px-4 py-2.5 text-sm text-neutral-700 hover:text-primary hover:bg-primary-light/30 transition-colors"
-                        >
-                          {sLink.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
+                      {link.label}
+                      <svg
+                        className={`w-4 h-4 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </Link>
+                    {isDropdownOpen && (
+                      <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-lg border border-neutral-100 py-2 animate-in fade-in slide-in-from-top-2">
+                        {dropdownItems.map((sLink) => (
+                          <Link
+                            key={sLink.href}
+                            href={sLink.href}
+                            className="block px-4 py-2.5 text-sm text-neutral-700 hover:text-primary hover:bg-primary-light/30 transition-colors"
+                          >
+                            {sLink.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -112,8 +131,8 @@ export default function Navbar() {
                 >
                   {link.label}
                 </Link>
-              )
-            )}
+              );
+            })}
             <Link
               href="/contact"
               className="ml-4 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md"
@@ -158,31 +177,34 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden border-t border-neutral-100 bg-white">
           <div className="px-4 py-3 space-y-1">
-            {navLinks.map((link) => (
-              <div key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => !link.hasDropdown && setIsOpen(false)}
-                  className="block px-3 py-2.5 rounded-lg text-sm font-medium text-neutral-700 hover:text-primary hover:bg-primary-light/50 transition-colors"
-                >
-                  {link.label}
-                </Link>
-                {link.hasDropdown && (
-                  <div className="ml-4 space-y-1">
-                    {serviceLinks.map((sLink) => (
-                      <Link
-                        key={sLink.href}
-                        href={sLink.href}
-                        onClick={() => setIsOpen(false)}
-                        className="block px-3 py-2 rounded-lg text-sm text-neutral-600 hover:text-primary hover:bg-primary-light/30 transition-colors"
-                      >
-                        {sLink.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+            {navLinks.map((link) => {
+              const dropdownItems = link.dropdownKey === "products" ? productLinks : serviceLinks;
+              return (
+                <div key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => !link.hasDropdown && setIsOpen(false)}
+                    className="block px-3 py-2.5 rounded-lg text-sm font-medium text-neutral-700 hover:text-primary hover:bg-primary-light/50 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                  {link.hasDropdown && (
+                    <div className="ml-4 space-y-1">
+                      {dropdownItems.map((sLink) => (
+                        <Link
+                          key={sLink.href}
+                          href={sLink.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block px-3 py-2 rounded-lg text-sm text-neutral-600 hover:text-primary hover:bg-primary-light/30 transition-colors"
+                        >
+                          {sLink.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}

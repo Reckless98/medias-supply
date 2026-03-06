@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_Thai, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import StickyContact from "@/components/StickyContact";
 import "@/styles/globals.css";
 
 const notoSansThai = Noto_Sans_Thai({
@@ -108,6 +109,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <StickyContact />
       </body>
     </html>
   );
