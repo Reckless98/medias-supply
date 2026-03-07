@@ -10,7 +10,7 @@ export default function StickyContact() {
       {expanded && (
         <div className="flex flex-col gap-2 animate-fade-in-up">
           <a
-            href="https://line.me/R/ti/p/@psmediassupply"
+            href="https://line.me/R/ti/p/@p.s.mediasupply"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-3 bg-[#06C755] text-white rounded-xl shadow-lg hover:brightness-110 transition-all text-sm font-medium"

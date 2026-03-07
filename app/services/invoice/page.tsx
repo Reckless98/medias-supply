@@ -248,7 +248,7 @@ export default function InvoicePage() {
               </svg>
             </Link>
             <a
-              href="https://line.me/R/ti/p/@psmediassupply"
+              href="https://line.me/R/ti/p/@p.s.mediasupply"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#06C755] text-white font-semibold rounded-xl hover:brightness-110 transition-all shadow-lg"

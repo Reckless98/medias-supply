@@ -202,7 +202,7 @@ export default function LandingPage({
                     <a href="mailto:psmedia65@gmail.com" className="text-neutral-900 font-semibold hover:text-primary transition-colors">psmedia65@gmail.com</a>
                   </div>
                   <a
-                    href="https://line.me/R/ti/p/@psmediassupply"
+                    href="https://line.me/R/ti/p/@p.s.mediasupply"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-5 py-3 bg-[#06C755] text-white rounded-xl font-semibold hover:brightness-110 transition-all text-sm mt-2"
