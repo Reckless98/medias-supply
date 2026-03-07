@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/services/forms", label: "บริการ", hasDropdown: true },
   { href: "/print-receipts", label: "สินค้า", hasDropdown: true, dropdownKey: "products" },
   { href: "/blog", label: "บทความ" },
-  { href: "/contact", label: "ติดต่อเรา" },
 ];
 
 const serviceLinks = [
@@ -137,7 +136,7 @@ export default function Navbar() {
               href="/contact"
               className="ml-4 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-dark transition-colors shadow-sm hover:shadow-md"
             >
-              ขอใบเสนอราคา
+              ติดต่อเรา
             </Link>
           </div>
 
@@ -210,7 +209,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className="block w-full text-center px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary-dark transition-colors mt-3"
             >
-              ขอใบเสนอราคา
+              ติดต่อเรา
             </Link>
           </div>
         </div>
