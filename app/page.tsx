@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import Hero from "@/components/Hero";
 import ServiceCard from "@/components/ServiceCard";
-// import AnimateOnScroll from "@/components/AnimateOnScroll"; // Uncomment when portfolio section is restored
 
 const services = [
   {
@@ -266,50 +266,66 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Portfolio / Products showcase - commented out until images available
+      {/* Portfolio Preview */}
       <section className="py-16 lg:py-24 bg-neutral-50" id="portfolio">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimateOnScroll animation="fade-up">
-            <div className="text-center mb-12 lg:mb-16">
-              <span className="text-primary text-sm font-semibold tracking-wide uppercase">
-                ผลงานของเรา
-              </span>
-              <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
-                ตัวอย่างผลิตภัณฑ์
-              </h2>
-              <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
-                งานพิมพ์คุณภาพจากลูกค้าที่ไว้วางใจเรา
-              </p>
-            </div>
-          </AnimateOnScroll>
+          <div className="text-center mb-12 lg:mb-16">
+            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+              ผลงานของเรา
+            </span>
+            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+              ตัวอย่างผลงานงานพิมพ์
+            </h2>
+            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+              งานพิมพ์คอมพิวเตอร์ฟอร์มคุณภาพจากลูกค้าที่ไว้วางใจเรา
+            </p>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {[
-              { name: "ใบเสร็จรับเงิน", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
-              { name: "ใบกำกับภาษี", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" },
-              { name: "อินวอยซ์ (Invoice)", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" },
-              { name: "ใบส่งของ", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
-              { name: "สติ๊กเกอร์สินค้า", icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z" },
-              { name: "โบรชัวร์", icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" },
-              { name: "กล่องบรรจุภัณฑ์", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
-              { name: "ใบจ่ายเงินเดือน", icon: "M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" },
+              { src: "/portfolio/receipt-paiboonphan.jpeg", name: "ใบเสร็จรับเงิน", color: "bg-red-400" },
+              { src: "/portfolio/tax-invoice-yongkee.jpeg", name: "ใบกำกับภาษี", color: "bg-yellow-400" },
+              { src: "/portfolio/delivery-yongkee.jpeg", name: "ใบส่งสินค้า / ใบแจ้งหนี้", color: "bg-blue-400" },
+              { src: "/portfolio/purchase-order-kangwal.jpeg", name: "ใบสั่งซื้อ", color: "bg-blue-400" },
+              { src: "/portfolio/receipt-pro-automotive.jpeg", name: "ต้นฉบับใบเสร็จรับเงิน", color: "bg-green-400" },
+              { src: "/portfolio/tax-invoice-matichon.jpeg", name: "ใบเสร็จ / ใบกำกับภาษี", color: "bg-blue-400" },
+              { src: "/portfolio/guest-folio-charoenthani.jpeg", name: "Guest Folio", color: "bg-neutral-400" },
+              { src: "/portfolio/invoice-matichon.jpeg", name: "ใบแจ้งหนี้", color: "bg-orange-400" },
             ].map((item, index) => (
-              <AnimateOnScroll key={index} animation="scale-in" delay={index * 60}>
-                <div className="bg-white rounded-2xl aspect-square flex items-center justify-center hover:bg-primary-light/30 transition-colors group cursor-pointer border border-neutral-100 shadow-sm">
-                  <div className="text-center p-4">
-                    <div className="w-12 h-12 bg-neutral-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/10 group-hover:shadow-md transition-all">
-                      <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
-                      </svg>
-                    </div>
-                    <p className="text-neutral-600 text-sm font-medium">{item.name}</p>
-                  </div>
+              <Link
+                key={index}
+                href="/portfolio"
+                className="group bg-white rounded-2xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div className="relative aspect-[3/4] overflow-hidden bg-neutral-100">
+                  <Image
+                    src={item.src}
+                    alt={item.name}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/50 to-transparent" />
                 </div>
-              </AnimateOnScroll>
+                <div className="p-3 flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${item.color} shrink-0`} />
+                  <p className="text-neutral-700 text-xs font-medium truncate">{item.name}</p>
+                </div>
+              </Link>
             ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors shadow-sm"
+            >
+              ดูผลงานทั้งหมด
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
-      End portfolio comment out */}
 
       {/* Contact CTA */}
       <section className="py-16 lg:py-24 bg-linear-to-br from-primary to-primary-dark text-white">

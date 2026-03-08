@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "หน้าแรก" },
   { href: "/services/forms", label: "บริการ", hasDropdown: true },
   { href: "/print-receipts", label: "สินค้า", hasDropdown: true, dropdownKey: "products" },
+  { href: "/portfolio", label: "ผลงาน" },
   { href: "/blog", label: "บทความ" },
 ];
 
