@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/print-product-labels",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/print-product-labels",
+  },
 };
 
 export default function PrintProductLabelsPage() {

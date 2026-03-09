@@ -73,12 +73,16 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": "https://psmediassupply.com/#organization",
   name: "P.S. MEDIAS SUPPLY CO., LTD.",
   alternateName: "บริษัท พี.เอส. มีเดียส์ ซัพพลาย จำกัด",
-  description: "โรงพิมพ์บริการงานพิมพ์ครบวงจร คอมพิวเตอร์ฟอร์ม ออฟเซ็ท สติ๊กเกอร์",
+  description:
+    "โรงพิมพ์บริการงานพิมพ์ครบวงจร คอมพิวเตอร์ฟอร์ม ออฟเซ็ท สติ๊กเกอร์ แบบฟอร์มธุรกิจ ใบเสร็จรับเงิน ใบกำกับภาษี กล่องบรรจุภัณฑ์ ประสบการณ์กว่า 30 ปี",
   url: "https://psmediassupply.com",
   telephone: ["+66819226779", "+66803406923"],
   email: "psmedia65@gmail.com",
+  image: "https://psmediassupply.com/og-image.jpg",
+  logo: "https://psmediassupply.com/og-image.jpg",
   address: {
     "@type": "PostalAddress",
     streetAddress: "68 ซอยงามวงศ์วาน 18 แยก 6/7",
@@ -87,8 +91,68 @@ const jsonLd = {
     postalCode: "11000",
     addressCountry: "TH",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 13.8622,
+    longitude: 100.5134,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Thailand",
+  },
   priceRange: "$$",
-  openingHours: "Mo-Sa 08:00-17:00",
+  currenciesAccepted: "THB",
+  paymentAccepted: "Cash, Bank Transfer",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "บริการงานพิมพ์",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "งานพิมพ์คอมพิวเตอร์ฟอร์ม",
+          description: "พิมพ์กระดาษต่อเนื่อง ใบเสร็จรับเงิน ใบกำกับภาษี ใบวางบิล กระดาษเคมี NCR",
+          url: "https://psmediassupply.com/services/forms",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "งานพิมพ์ออฟเซ็ท",
+          description: "พิมพ์หนังสือ โบรชัวร์ สมุด ถุงกระดาษ กล่องบรรจุภัณฑ์ เคลือบลามิเนต",
+          url: "https://psmediassupply.com/services/offset",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "งานพิมพ์สติ๊กเกอร์",
+          description: "สติ๊กเกอร์ม้วน สติ๊กเกอร์แผ่น ฉลากสินค้า ทนทาน สีสันสดใส",
+          url: "https://psmediassupply.com/services/stickers",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "แบบฟอร์มธุรกิจ",
+          description: "อินวอยซ์ ใบเสร็จ ใบกำกับภาษี ใบส่งของ ใบจ่ายเงินเดือน หนังสือรับรองหักภาษี",
+          url: "https://psmediassupply.com/services/invoice",
+        },
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

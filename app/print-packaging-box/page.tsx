@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/print-packaging-box",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/print-packaging-box",
+  },
 };
 
 export default function PrintPackagingBoxPage() {

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/blog/how-to-print-receipt-books",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/blog/how-to-print-receipt-books",
+  },
 };
 
 export default function HowToPrintReceiptBooks() {

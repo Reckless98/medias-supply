@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/blog/difference-between-invoice-and-tax-invoice",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/blog/difference-between-invoice-and-tax-invoice",
+  },
 };
 
 export default function DifferenceBetweenInvoiceAndTaxInvoice() {

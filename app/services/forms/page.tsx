@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export const metadata: Metadata = {
   title: "งานพิมพ์คอมพิวเตอร์ฟอร์ม | กระดาษต่อเนื่อง กระดาษเคมี",
   description:
     "บริการรับพิมพ์กระดาษต่อเนื่องคอมพิวเตอร์ทุกชนิด ใบเสร็จรับเงิน ใบกำกับภาษี ใบวางบิล กระดาษเคมีเปล่า กระดาษต่อเนื่อง 9x11 คุณภาพสูง ส่งมอบตรงเวลา โทร 081-922-6779",
+  keywords: ["คอมพิวเตอร์ฟอร์ม", "กระดาษต่อเนื่อง", "กระดาษเคมี", "พิมพ์ใบเสร็จ", "พิมพ์ใบกำกับภาษี", "พิมพ์ใบวางบิล", "กระดาษ 9x11"],
+  openGraph: {
+    title: "งานพิมพ์คอมพิวเตอร์ฟอร์ม | P.S. MEDIAS SUPPLY",
+    description: "รับพิมพ์กระดาษต่อเนื่องคอมพิวเตอร์ทุกชนิด ใบเสร็จ ใบกำกับภาษี ใบวางบิล คุณภาพสูง โทร 081-922-6779",
+    type: "website",
+    locale: "th_TH",
+    url: "https://psmediassupply.com/services/forms",
+  },
+  alternates: {
+    canonical: "https://psmediassupply.com/services/forms",
+  },
 };
 
 const formTypes = [
@@ -59,6 +71,7 @@ export default function FormsPage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         </div>
+        <FloatingParticles variant="dark" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <Link
@@ -79,7 +92,7 @@ export default function FormsPage() {
             </h1>
             <p className="mt-4 text-neutral-300 text-lg leading-relaxed max-w-2xl">
               บริการพิมพ์แบบฟอร์มต่อเนื่องครบวงจร ด้วยระบบคอมพิวเตอร์ฟอร์มที่ทันสมัย
-              คุณภาพคมชัด หลายสำเนา สำหรับธุรกิจทุกประเภท ด้วยประสบการณ์กว่า 20 ปี
+              คุณภาพคมชัด หลายสำเนา สำหรับธุรกิจทุกประเภท ด้วยประสบการณ์กว่า 30 ปี
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {["หลายสำเนา", "Running Number", "กระดาษเคมี NCR", "จัดส่งฟรี กทม."].map((tag) => (

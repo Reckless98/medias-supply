@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/blog/best-sticker-printing-for-products",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/blog/best-sticker-printing-for-products",
+  },
 };
 
 export default function BestStickerPrintingForProducts() {

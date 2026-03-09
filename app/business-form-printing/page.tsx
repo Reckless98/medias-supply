@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/business-form-printing",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/business-form-printing",
+  },
 };
 
 export default function BusinessFormPrintingPage() {
@@ -35,7 +38,7 @@ export default function BusinessFormPrintingPage() {
         { title: "ถูกต้องตามกฎหมาย", description: "ออกแบบตามมาตรฐาน ผ่านการตรวจสอบจากผู้เชี่ยวชาญ" },
         { title: "กระดาษเคมีเกรด A", description: "Carbonless NCR คุณภาพสูงสุด ติดชัดทุกใบ ทนทาน" },
         { title: "ออกแบบฟรี", description: "บริการออกแบบแบบฟอร์มตามรูปแบบบริษัทฟรี" },
-        { title: "ประสบการณ์ 20+ ปี", description: "ส่งมอบแบบฟอร์มธุรกิจคุณภาพให้กว่า 1,000 บริษัท" },
+        { title: "ประสบการณ์ 30+ ปี", description: "ส่งมอบแบบฟอร์มธุรกิจคุณภาพให้กว่า 1,000 บริษัท" },
         { title: "ราคายุติธรรม", description: "ราคาเป็นกันเอง ไม่บวกเพิ่ม ไม่มีค่าใช้จ่ายซ่อนเร้น" },
       ]}
       relatedLinks={[

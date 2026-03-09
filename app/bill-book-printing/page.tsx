@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/bill-book-printing",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/bill-book-printing",
+  },
 };
 
 export default function BillBookPrintingPage() {

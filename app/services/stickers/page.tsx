@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export const metadata: Metadata = {
   title: "งานพิมพ์สติ๊กเกอร์ | สติ๊กเกอร์ม้วน สติ๊กเกอร์แผ่น ฉลากสินค้า",
   description:
     "บริการพิมพ์สติ๊กเกอร์คุณภาพสูง สติ๊กเกอร์ม้วน สติ๊กเกอร์แผ่น ฉลากสินค้า งานพิมพ์ฉลากทุกประเภท ทนทาน สีสันสดใส โทร 081-922-6779",
+  keywords: ["พิมพ์สติ๊กเกอร์", "สติ๊กเกอร์สินค้า", "สติ๊กเกอร์ม้วน", "สติ๊กเกอร์แผ่น", "ฉลากสินค้า", "พิมพ์ฉลาก", "สติ๊กเกอร์ราคาถูก"],
+  openGraph: {
+    title: "งานพิมพ์สติ๊กเกอร์ | P.S. MEDIAS SUPPLY",
+    description: "รับพิมพ์สติ๊กเกอร์คุณภาพสูง สติ๊กเกอร์ม้วน แผ่น ฉลากสินค้า ทนทาน สีสันสดใส โทร 081-922-6779",
+    type: "website",
+    locale: "th_TH",
+    url: "https://psmediassupply.com/services/stickers",
+  },
+  alternates: {
+    canonical: "https://psmediassupply.com/services/stickers",
+  },
 };
 
 const stickerTypes = [
@@ -62,6 +74,7 @@ export default function StickersPage() {
           <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary rounded-full blur-3xl -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary rounded-full blur-3xl translate-y-1/2 translate-x-1/2" />
         </div>
+        <FloatingParticles variant="dark" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <Link

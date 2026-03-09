@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export const metadata: Metadata = {
   title: "งานพิมพ์ออฟเซ็ท | หนังสือ โบรชัวร์ กล่องบรรจุภัณฑ์ เคลือบลามิเนต",
   description:
     "บริการรับพิมพ์งานระบบออฟเซ็ททุกชนิด หนังสือ โบรชัวร์ สมุด ถุงกระดาษ กล่องบรรจุภัณฑ์ พร้อมเคลือบเงายูวี เคลือบลามิเนต งานเจาะ งานไดคัท โทร 081-922-6779",
+  keywords: ["พิมพ์ออฟเซ็ท", "โรงพิมพ์ออฟเซ็ท", "พิมพ์หนังสือ", "พิมพ์โบรชัวร์", "พิมพ์กล่องบรรจุภัณฑ์", "เคลือบลามิเนต", "งานไดคัท"],
+  openGraph: {
+    title: "งานพิมพ์ออฟเซ็ท | P.S. MEDIAS SUPPLY",
+    description: "รับพิมพ์งานออฟเซ็ท หนังสือ โบรชัวร์ กล่อง ถุงกระดาษ เคลือบลามิเนต โทร 081-922-6779",
+    type: "website",
+    locale: "th_TH",
+    url: "https://psmediassupply.com/services/offset",
+  },
+  alternates: {
+    canonical: "https://psmediassupply.com/services/offset",
+  },
 };
 
 const products = [
@@ -54,6 +66,7 @@ export default function OffsetPage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         </div>
+        <FloatingParticles variant="dark" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <Link

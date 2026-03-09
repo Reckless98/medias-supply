@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export default function Hero() {
   return (
@@ -12,6 +13,8 @@ export default function Hero() {
 
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] bg-size-[60px_60px]" />
+
+      <FloatingParticles variant="dark" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="max-w-4xl">
@@ -79,7 +82,7 @@ export default function Hero() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-2xl animate-fade-in-up [animation-delay:0.5s]">
             <div>
-              <p className="text-2xl sm:text-3xl font-bold text-white">20+</p>
+              <p className="text-2xl sm:text-3xl font-bold text-white">30+</p>
               <p className="text-neutral-400 text-sm mt-1">ปีประสบการณ์</p>
             </div>
             <div>

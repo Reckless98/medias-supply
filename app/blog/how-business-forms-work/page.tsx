@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/blog/how-business-forms-work",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/blog/how-business-forms-work",
+  },
 };
 
 export default function HowBusinessFormsWork() {
@@ -82,7 +85,7 @@ export default function HowBusinessFormsWork() {
 
             <h2 className="text-2xl font-bold text-neutral-900 mt-10 mb-4">สรุป</h2>
             <p className="text-neutral-600 leading-relaxed mb-4">
-              การเลือกแบบฟอร์มธุรกิจที่ถูกต้องช่วยให้งานเอกสารเป็นระบบ ลดข้อผิดพลาด และถูกต้องตามกฎหมาย P.S. MEDIAS SUPPLY เป็นผู้เชี่ยวชาญด้านงานพิมพ์แบบฟอร์มมากว่า 20 ปี สามารถปรึกษาและออกแบบแบบฟอร์มได้ฟรี โทร 081-922-6779
+              การเลือกแบบฟอร์มธุรกิจที่ถูกต้องช่วยให้งานเอกสารเป็นระบบ ลดข้อผิดพลาด และถูกต้องตามกฎหมาย P.S. MEDIAS SUPPLY เป็นผู้เชี่ยวชาญด้านงานพิมพ์แบบฟอร์มมากว่า 30 ปี สามารถปรึกษาและออกแบบแบบฟอร์มได้ฟรี โทร 081-922-6779
             </p>
           </div>
 

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/print-invoices",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/print-invoices",
+  },
 };
 
 export default function PrintInvoicesPage() {
@@ -34,7 +37,7 @@ export default function PrintInvoicesPage() {
         { title: "กระดาษเคมีคุณภาพสูง", description: "ใช้กระดาษ Carbonless NCR เกรด A ติดชัดทุกใบ ไม่ซีดง่าย" },
         { title: "ออกแบบฟรี", description: "บริการออกแบบบิลตามรูปแบบบริษัทฟรี ไม่มีค่าใช้จ่ายเพิ่ม" },
         { title: "Running Number แม่นยำ", description: "ระบบเลขรันนิ่งแม่นยำ ไม่ซ้ำ ตรวจสอบง่าย" },
-        { title: "ประสบการณ์ 20+ ปี", description: "ส่งมอบบิลคุณภาพให้ธุรกิจมากกว่า 1,000 รายทั่วประเทศ" },
+        { title: "ประสบการณ์ 30+ ปี", description: "ส่งมอบบิลคุณภาพให้ธุรกิจมากกว่า 1,000 รายทั่วประเทศ" },
         { title: "ตรงต่อเวลา", description: "ส่งมอบงานตรงนัดหมาย วางใจได้ทุกออเดอร์" },
         { title: "ราคาเป็นกันเอง", description: "ราคายุติธรรม คุ้มค่า ไม่มีค่าใช้จ่ายซ่อนเร้น" },
       ]}

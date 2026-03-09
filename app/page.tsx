@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Hero from "@/components/Hero";
+import FloatingParticles from "@/components/FloatingParticles";
 import ServiceCard from "@/components/ServiceCard";
 
 const services = [
@@ -206,7 +207,7 @@ export default function HomePage() {
               </p>
               <div className="mt-8 grid grid-cols-2 gap-6">
                 <div className="bg-primary-light/50 rounded-xl p-4">
-                  <p className="text-3xl font-bold text-primary">20+</p>
+                  <p className="text-3xl font-bold text-primary">30+</p>
                   <p className="text-sm text-neutral-600 mt-1">ปีประสบการณ์</p>
                 </div>
                 <div className="bg-secondary-light/50 rounded-xl p-4">
@@ -267,14 +268,15 @@ export default function HomePage() {
       </section>
 
       {/* Portfolio Preview */}
-      <section className="py-16 lg:py-24 bg-neutral-50" id="portfolio">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 lg:py-24 bg-neutral-50 overflow-hidden" id="portfolio">
+        <FloatingParticles variant="light" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
             <span className="text-primary text-sm font-semibold tracking-wide uppercase">
-              ผลงานของเรา
+              Portfolio
             </span>
             <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
-              ตัวอย่างผลงานงานพิมพ์
+              ผลงานตัวอย่าง
             </h2>
             <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
               งานพิมพ์คอมพิวเตอร์ฟอร์มคุณภาพจากลูกค้าที่ไว้วางใจเรา

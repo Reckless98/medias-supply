@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export const metadata: Metadata = {
   title: "แบบฟอร์มธุรกิจ | อินวอยซ์ ใบเสร็จ ใบกำกับภาษี ใบจ่ายเงินเดือน",
   description:
     "รับพิมพ์แบบฟอร์มธุรกิจครบวงจร อินวอยซ์ ใบเสร็จรับเงิน ใบกำกับภาษี ใบส่งของ ใบแจ้งหนี้ ใบจ่ายเงินเดือนพนักงาน หนังสือรับรองการหักภาษี ณ ที่จ่าย โทร 081-922-6779",
+  keywords: ["แบบฟอร์มธุรกิจ", "พิมพ์อินวอยซ์", "พิมพ์ใบเสร็จ", "ใบกำกับภาษี", "ใบส่งของ", "ใบแจ้งหนี้", "ใบจ่ายเงินเดือน"],
+  openGraph: {
+    title: "แบบฟอร์มธุรกิจ | P.S. MEDIAS SUPPLY",
+    description: "รับพิมพ์แบบฟอร์มธุรกิจครบวงจร อินวอยซ์ ใบเสร็จ ใบกำกับภาษี ใบส่งของ โทร 081-922-6779",
+    type: "website",
+    locale: "th_TH",
+    url: "https://psmediassupply.com/services/invoice",
+  },
+  alternates: {
+    canonical: "https://psmediassupply.com/services/invoice",
+  },
 };
 
 const documentIcons = [
@@ -95,6 +107,7 @@ export default function InvoicePage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         </div>
+        <FloatingParticles variant="dark" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <Link

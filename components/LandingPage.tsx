@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+import FloatingParticles from "@/components/FloatingParticles";
 
 interface Product {
   name: string;
@@ -63,6 +64,7 @@ export default function LandingPage({
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         </div>
+        <FloatingParticles variant="dark" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full mb-6">
@@ -151,7 +153,7 @@ export default function LandingPage({
               ทำไมต้องเลือกเรา?
             </h2>
             <p className="text-neutral-600 text-center mb-10">
-              P.S. MEDIAS SUPPLY คือโรงพิมพ์ที่ลูกค้าไว้วางใจมากว่า 20 ปี
+              P.S. MEDIAS SUPPLY คือโรงพิมพ์ที่ลูกค้าไว้วางใจมากว่า 30 ปี
             </p>
           </AnimateOnScroll>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import Link from "next/link";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export const metadata: Metadata = {
   title: "ติดต่อเรา | ขอใบเสนอราคางานพิมพ์",
   description:
     "ติดต่อ P.S. MEDIAS SUPPLY CO., LTD. สำหรับงานพิมพ์ทุกประเภท โทร 081-922-6779, 080-340-6923 อีเมล psmedia65@gmail.com",
+  keywords: ["ติดต่อโรงพิมพ์", "ขอใบเสนอราคางานพิมพ์", "โรงพิมพ์นนทบุรี", "โรงพิมพ์ใกล้ฉัน", "สั่งพิมพ์งาน"],
+  openGraph: {
+    title: "ติดต่อเรา | P.S. MEDIAS SUPPLY",
+    description: "ติดต่อสอบถามงานพิมพ์ ขอใบเสนอราคา โทร 081-922-6779, 080-340-6923",
+    type: "website",
+    locale: "th_TH",
+    url: "https://psmediassupply.com/contact",
+  },
+  alternates: {
+    canonical: "https://psmediassupply.com/contact",
+  },
 };
 
 const contactInfo = [
@@ -76,6 +88,7 @@ export default function ContactPage() {
       <section className="relative overflow-hidden bg-linear-to-br from-neutral-900 to-neutral-800 py-16 lg:py-24">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#06C755]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        <FloatingParticles variant="dark" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-primary text-sm font-semibold">
@@ -169,7 +182,7 @@ export default function ContactPage() {
                   บริษัท พี.เอส. มีเดียส์ ซัพพลาย จำกัด
                   ผู้เชี่ยวชาญด้านงานพิมพ์ครบวงจร
                   ให้บริการงานพิมพ์คุณภาพสูงสำหรับธุรกิจทุกประเภท
-                  ด้วยประสบการณ์มากกว่า 20 ปี
+                  ด้วยประสบการณ์มากกว่า 30 ปี
                 </p>
                 <Link
                   href="/"

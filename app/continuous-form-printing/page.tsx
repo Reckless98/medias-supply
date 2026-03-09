@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     locale: "th_TH",
     url: "https://psmediassupply.com/continuous-form-printing",
   },
+  alternates: {
+    canonical: "https://psmediassupply.com/continuous-form-printing",
+  },
 };
 
 export default function ContinuousFormPrintingPage() {
@@ -21,7 +24,7 @@ export default function ContinuousFormPrintingPage() {
       headline="รับพิมพ์กระดาษต่อเนื่อง คอมพิวเตอร์ฟอร์ม คุณภาพสูง"
       subheadline={'บริการพิมพ์กระดาษต่อเนื่อง (Continuous Form) สำหรับเครื่องปริ้นเตอร์ Dot Matrix ขนาด 9" x 11" พิมพ์ 1-6 ชั้น กระดาษเคมี NCR คุณภาพเกรด A พร้อมกระดาษเคมีเปล่า Carbonless 2-7 ชั้น'}
       keyword="พิมพ์กระดาษต่อเนื่อง"
-      description={'P.S. MEDIAS SUPPLY เชี่ยวชาญด้านการพิมพ์กระดาษต่อเนื่องคอมพิวเตอร์ฟอร์มมากว่า 20 ปี เรารับพิมพ์แบบฟอร์มต่อเนื่องทุกขนาด ทั้งขนาดมาตรฐาน 9" x 11" และขนาดพิเศษตามความต้องการ ด้วยกระดาษเคมี NCR คุณภาพเกรด A ติดชัดทุกใบ สีไม่ซีด ทนทาน'}
+      description={'P.S. MEDIAS SUPPLY เชี่ยวชาญด้านการพิมพ์กระดาษต่อเนื่องคอมพิวเตอร์ฟอร์มมากว่า 30 ปี เรารับพิมพ์แบบฟอร์มต่อเนื่องทุกขนาด ทั้งขนาดมาตรฐาน 9" x 11" และขนาดพิเศษตามความต้องการ ด้วยกระดาษเคมี NCR คุณภาพเกรด A ติดชัดทุกใบ สีไม่ซีด ทนทาน'}
       products={[
         { name: 'กระดาษต่อเนื่อง 9" x 11"', description: "ขนาดมาตรฐานสำหรับเครื่อง Dot Matrix พิมพ์ 1-4 ชั้น กระดาษเคมี NCR" },
         { name: "กระดาษเคมีเปล่า (Blank Carbonless)", description: "กระดาษเคมีเปล่า Carbonless 2-7 ชั้น สำหรับพิมพ์จากคอมพิวเตอร์โดยตรง" },

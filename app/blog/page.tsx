@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export const metadata: Metadata = {
   title: "บทความ | ความรู้เกี่ยวกับงานพิมพ์",
   description:
-    "บทความความรู้เกี่ยวกับงานพิมพ์ ใบเสร็จ ใบกำกับภาษี สติ๊กเกอร์ แบบฟอร์มธุรกิจ คอมพิวเตอร์ฟอร์ม จาก P.S. MEDIAS SUPPLY ผู้เชี่ยวชาญงานพิมพ์มากว่า 20 ปี",
+    "บทความความรู้เกี่ยวกับงานพิมพ์ ใบเสร็จ ใบกำกับภาษี สติ๊กเกอร์ แบบฟอร์มธุรกิจ คอมพิวเตอร์ฟอร์ม จาก P.S. MEDIAS SUPPLY ผู้เชี่ยวชาญงานพิมพ์มากว่า 30 ปี",
   keywords: ["บทความงานพิมพ์", "ความรู้โรงพิมพ์", "วิธีพิมพ์ใบเสร็จ", "ข้อมูลงานพิมพ์"],
   openGraph: {
     title: "บทความ | P.S. MEDIAS SUPPLY CO., LTD.",
@@ -12,6 +13,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "th_TH",
     url: "https://psmediassupply.com/blog",
+  },
+  alternates: {
+    canonical: "https://psmediassupply.com/blog",
   },
 };
 
@@ -46,8 +50,9 @@ export default function BlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-linear-to-br from-neutral-900 to-neutral-800 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-linear-to-br from-neutral-900 to-neutral-800 py-16 lg:py-24">
+        <FloatingParticles variant="dark" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-primary text-sm font-semibold">บทความ</span>
             <h1 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
@@ -55,7 +60,7 @@ export default function BlogPage() {
             </h1>
             <p className="mt-4 text-neutral-300 text-lg leading-relaxed">
               บทความและความรู้เกี่ยวกับงานพิมพ์ เอกสารธุรกิจ สติ๊กเกอร์ และแบบฟอร์มต่างๆ
-              จากประสบการณ์กว่า 20 ปีของ P.S. MEDIAS SUPPLY
+              จากประสบการณ์กว่า 30 ปีของ P.S. MEDIAS SUPPLY
             </p>
           </div>
         </div>
