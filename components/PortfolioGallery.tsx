@@ -35,20 +35,26 @@ const colorDots: Record<string, string> = {
 
 export default function PortfolioGallery({ items }: { items: PortfolioItem[] }) {
   const [lightbox, setLightbox] = useState<PortfolioItem | null>(null);
+  const [imageLoading, setImageLoading] = useState(true);
 
-  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const closeLightbox = useCallback((): void => setLightbox(null), []);
+
+  const openLightbox = useCallback((item: PortfolioItem): void => {
+    setImageLoading(true);
+    setLightbox(item);
+  }, []);
 
   useEffect(() => {
     if (!lightbox) return;
-    const handleKey = (e: KeyboardEvent) => {
+    const handleKey = (e: KeyboardEvent): void => {
       if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowRight") {
         const idx = items.indexOf(lightbox);
-        if (idx < items.length - 1) setLightbox(items[idx + 1]);
+        if (idx < items.length - 1) openLightbox(items[idx + 1]);
       }
       if (e.key === "ArrowLeft") {
         const idx = items.indexOf(lightbox);
-        if (idx > 0) setLightbox(items[idx - 1]);
+        if (idx > 0) openLightbox(items[idx - 1]);
       }
     };
     document.body.style.overflow = "hidden";
@@ -57,7 +63,7 @@ export default function PortfolioGallery({ items }: { items: PortfolioItem[] }) 
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKey);
     };
-  }, [lightbox, items, closeLightbox]);
+  }, [lightbox, items, closeLightbox, openLightbox]);
 
   return (
     <>
@@ -66,19 +72,26 @@ export default function PortfolioGallery({ items }: { items: PortfolioItem[] }) 
           <button
             key={index}
             type="button"
-            onClick={() => setLightbox(item)}
+            onClick={() => openLightbox(item)}
             className={`group bg-white rounded-2xl border border-neutral-100 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 text-left cursor-pointer ${colorAccents[item.color]}`}
           >
-            <div className="relative aspect-3/4 overflow-hidden bg-neutral-50">
+            <div className="relative aspect-3/4 overflow-hidden bg-neutral-100">
+              {/* Skeleton shimmer */}
+              <div className="absolute inset-0 bg-gradient-to-r from-neutral-100 via-neutral-200 to-neutral-100 animate-pulse" />
               <Image
                 src={item.src}
                 alt={item.alt}
                 fill
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                quality={75}
               />
+              {/* Watermark */}
+              <div className="absolute inset-0 z-5 flex items-center justify-center pointer-events-none opacity-15">
+                <Image src="/logo.svg" alt="" aria-hidden="true" width={200} height={200} className="w-1/2 h-auto" />
+              </div>
               {/* Gradient overlay at bottom */}
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
+              <div className="absolute z-10 inset-x-0 bottom-0 h-32 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
               {/* Category badge */}
               <div className="absolute top-3 right-3 z-10">
                 <span className={`w-3 h-3 rounded-full block ${colorDots[item.color]}`} />
@@ -103,7 +116,7 @@ export default function PortfolioGallery({ items }: { items: PortfolioItem[] }) 
       {/* Lightbox Modal — rendered via portal to escape stacking contexts */}
       {lightbox && createPortal(
         <div
-          className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 p-4"
           onClick={closeLightbox}
           role="dialog"
           aria-modal="true"
@@ -126,7 +139,7 @@ export default function PortfolioGallery({ items }: { items: PortfolioItem[] }) 
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                setLightbox(items[items.indexOf(lightbox) - 1]);
+                openLightbox(items[items.indexOf(lightbox) - 1]);
               }}
               className="absolute left-4 z-110 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors cursor-pointer"
               aria-label="ก่อนหน้า"
@@ -141,7 +154,7 @@ export default function PortfolioGallery({ items }: { items: PortfolioItem[] }) 
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                setLightbox(items[items.indexOf(lightbox) + 1]);
+                openLightbox(items[items.indexOf(lightbox) + 1]);
               }}
               className="absolute right-4 z-110 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors cursor-pointer"
               aria-label="ถัดไป"
@@ -157,15 +170,24 @@ export default function PortfolioGallery({ items }: { items: PortfolioItem[] }) 
             className="relative max-w-4xl w-full max-h-[90vh] aspect-3/4"
             onClick={(e) => e.stopPropagation()}
           >
+            {imageLoading && (
+              <div className="absolute inset-0 bg-gradient-to-r from-neutral-800 via-neutral-700 to-neutral-800 animate-pulse" />
+            )}
             <Image
-              src={lightbox.src}
-              alt={lightbox.alt}
-              fill
-              className="object-contain"
-              sizes="90vw"
-              priority
-            />
-            </div>
+               src={lightbox.src}
+               alt={lightbox.alt}
+               fill
+               className={`object-contain transition-opacity duration-500 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+               sizes="90vw"
+               priority
+               quality={75}
+               onLoad={() => setImageLoading(false)}
+             />
+            {/* Watermark */}
+            <div className="absolute z-10 inset-0 flex items-center justify-center pointer-events-none opacity-20">
+               <Image src="/logo.svg" alt="" width={400} height={400} className="w-1/3 h-auto" />
+             </div>
+          </div>
 
           {/* Caption */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">

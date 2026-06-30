@@ -33,7 +33,7 @@ export default function FloatingParticles({
 
     const isDark = variant === "dark";
 
-    const count = isDark ? 30 : 40;
+    const count = Math.min(isDark ? 30 : 40, 20);
     const maxSize = isDark ? 5 : 4;
     const minSize = isDark ? 2 : 2;
     const speed = isDark ? 0.4 : 0.3;
@@ -120,11 +120,21 @@ export default function FloatingParticles({
     init();
     draw();
 
+    const handleVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        cancelAnimationFrame(animationId);
+      } else {
+        draw();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
     const observer = new ResizeObserver(resize);
     if (canvas.parentElement) observer.observe(canvas.parentElement);
 
     return () => {
       cancelAnimationFrame(animationId);
+      document.removeEventListener("visibilitychange", handleVisibility);
       observer.disconnect();
     };
   }, [variant]);

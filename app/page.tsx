@@ -3,6 +3,7 @@ import Image from "next/image";
 import Hero from "@/components/Hero";
 import FloatingParticles from "@/components/FloatingParticles";
 import ServiceCard from "@/components/ServiceCard";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 const services = [
   {
@@ -122,18 +123,20 @@ export default function HomePage() {
       {/* Services Section */}
       <section className="py-16 lg:py-24 bg-neutral-50" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
-              ยินดีให้บริการ
-            </span>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
-              บริการงานพิมพ์ครบทุกรูปแบบ
-            </h2>
-            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
-              เราให้บริการงานพิมพ์หลากหลายประเภท ด้วยเทคโนโลยีที่ทันสมัย
-              เพื่อตอบโจทย์ทุกความต้องการของธุรกิจคุณ
-            </p>
-          </div>
+          <AnimateOnScroll animation="fade-up">
+            <div className="text-center mb-12 lg:mb-16">
+              <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                ยินดีให้บริการ
+              </span>
+              <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+                บริการงานพิมพ์ครบทุกรูปแบบ
+              </h2>
+              <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+                เราให้บริการงานพิมพ์หลากหลายประเภท ด้วยเทคโนโลยีที่ทันสมัย
+                เพื่อตอบโจทย์ทุกความต้องการของธุรกิจคุณ
+              </p>
+            </div>
+          </AnimateOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
             {services.map((service, index) => (
               <ServiceCard key={index} {...service} />
@@ -145,17 +148,19 @@ export default function HomePage() {
       {/* Paper Types Section */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
-              จำหน่าย
-            </span>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
-              กระดาษต่อเนื่องและกระดาษเคมี
-            </h2>
-            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
-              ใช้กระดาษชนิดเกรด A ติดชัดทุกใบ กระดาษเคมีต่างสี (Carbonless) คุณภาพดี
-            </p>
-          </div>
+          <AnimateOnScroll animation="fade-up" delay={100}>
+            <div className="text-center mb-12 lg:mb-16">
+              <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                จำหน่าย
+              </span>
+              <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+                กระดาษต่อเนื่องและกระดาษเคมี
+              </h2>
+              <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+                ใช้กระดาษชนิดเกรด A ติดชัดทุกใบ กระดาษเคมีต่างสี (Carbonless) คุณภาพดี
+              </p>
+            </div>
+          </AnimateOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {paperTypes.map((paper, index) => (
               <div
@@ -185,6 +190,7 @@ export default function HomePage() {
       <section className="py-16 lg:py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <AnimateOnScroll animation="fade-right">
             <div>
               <span className="text-primary text-sm font-semibold tracking-wide uppercase">
                 เกี่ยวกับเรา
@@ -216,6 +222,8 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+            </AnimateOnScroll>
+            <AnimateOnScroll animation="fade-left" delay={200}>
             <div className="relative">
               <div className="bg-white rounded-2xl aspect-square lg:aspect-[4/3] flex items-center justify-center overflow-hidden border border-neutral-100 shadow-sm">
                 <div className="text-center p-8">
@@ -232,6 +240,7 @@ export default function HomePage() {
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-2xl -z-10" />
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
             </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </section>
@@ -239,17 +248,19 @@ export default function HomePage() {
       {/* Why Choose Us */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
-              ทำไมต้องเลือกเรา
-            </span>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
-              งานดีมีคุณภาพ ซื่อสัตย์ ตรงต่อเวลา ราคายุติธรรม
-            </h2>
-            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
-              ความไว้วางใจจากลูกค้ากว่า 1,000 ราย เป็นเครื่องยืนยันคุณภาพของเรา
-            </p>
-          </div>
+          <AnimateOnScroll animation="fade-up">
+            <div className="text-center mb-12 lg:mb-16">
+              <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                ทำไมต้องเลือกเรา
+              </span>
+              <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+                งานดีมีคุณภาพ ซื่อสัตย์ ตรงต่อเวลา ราคายุติธรรม
+              </h2>
+              <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+                ความไว้วางใจจากลูกค้ากว่า 1,000 ราย เป็นเครื่องยืนยันคุณภาพของเรา
+              </p>
+            </div>
+          </AnimateOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
             {whyChooseUs.map((item, index) => (
               <div
@@ -271,17 +282,19 @@ export default function HomePage() {
       <section className="relative py-16 lg:py-24 bg-neutral-50 overflow-hidden" id="portfolio">
         <FloatingParticles variant="light" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <span className="text-primary text-sm font-semibold tracking-wide uppercase">
-              Portfolio
-            </span>
-            <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
-              ผลงานตัวอย่าง
-            </h2>
-            <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
-              งานพิมพ์คอมพิวเตอร์ฟอร์มคุณภาพจากลูกค้าที่ไว้วางใจเรา
-            </p>
-          </div>
+          <AnimateOnScroll animation="fade-up">
+            <div className="text-center mb-12 lg:mb-16">
+              <span className="text-primary text-sm font-semibold tracking-wide uppercase">
+                Portfolio
+              </span>
+              <h2 className="mt-3 text-3xl lg:text-4xl font-bold text-neutral-900">
+                ผลงานตัวอย่าง
+              </h2>
+              <p className="mt-4 text-neutral-600 max-w-2xl mx-auto">
+                งานพิมพ์คอมพิวเตอร์ฟอร์มคุณภาพจากลูกค้าที่ไว้วางใจเรา
+              </p>
+            </div>
+          </AnimateOnScroll>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {[
               { src: "/portfolio/receipt-paiboonphan.jpeg", name: "ใบเสร็จรับเงิน", color: "bg-red-400" },

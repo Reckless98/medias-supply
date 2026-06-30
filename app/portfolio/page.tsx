@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PortfolioGallery from "@/components/PortfolioGallery";
 import FloatingParticles from "@/components/FloatingParticles";
+import PortfolioCategoryFilter from "@/components/PortfolioCategoryFilter";
 
 export const metadata: Metadata = {
   title: "ผลงานตัวอย่าง | ตัวอย่างงานพิมพ์คอมพิวเตอร์ฟอร์ม",
@@ -166,8 +166,6 @@ const portfolioItems = [
   },
 ];
 
-
-
 export default function PortfolioPage() {
   return (
     <>
@@ -199,96 +197,8 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Category Navigation */}
-      <section className="sticky top-16 lg:top-20 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-2 overflow-x-auto py-4 scrollbar-hide">
-            {categories.map((cat) => (
-              <a
-                key={cat.id}
-                href={cat.id === "all" ? "#gallery" : `#${cat.id}`}
-                className="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap border border-neutral-200 text-neutral-700 hover:border-primary hover:text-primary hover:bg-primary-light/30 transition-all duration-200"
-              >
-                {cat.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className="relative py-16 lg:py-24 overflow-hidden" id="gallery">
-        <FloatingParticles variant="light" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Receipt Section */}
-          <div id="receipt" className="mb-16 scroll-mt-36">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-neutral-900">ใบเสร็จรับเงิน</h2>
-                <p className="text-neutral-500 text-sm">Receipt — {portfolioItems.filter(i => i.category === "receipt").length} ตัวอย่าง</p>
-              </div>
-            </div>
-            <p className="text-neutral-500 text-sm mb-8 ml-13">ใบเสร็จรับเงินแบบกระดาษต่อเนื่อง พิมพ์หลายสี ออกแบบเฉพาะตามบริษัทลูกค้า</p>
-            <PortfolioGallery items={portfolioItems.filter(i => i.category === "receipt")} />
-          </div>
-
-          {/* Tax Invoice Section */}
-          <div id="tax-invoice" className="mb-16 scroll-mt-36">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-neutral-900">ใบกำกับภาษี</h2>
-                <p className="text-neutral-500 text-sm">Tax Invoice — {portfolioItems.filter(i => i.category === "tax-invoice").length} ตัวอย่าง</p>
-              </div>
-            </div>
-            <p className="text-neutral-500 text-sm mb-8 ml-13">ใบกำกับภาษีและใบเสร็จรวม พิมพ์คมชัด พร้อมโลโก้และรายละเอียดครบถ้วน</p>
-            <PortfolioGallery items={portfolioItems.filter(i => i.category === "tax-invoice")} />
-          </div>
-
-          {/* Delivery / Invoice Section */}
-          <div id="delivery" className="mb-16 scroll-mt-36">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-neutral-900">ใบส่งของ / ใบแจ้งหนี้</h2>
-                <p className="text-neutral-500 text-sm">Delivery Order & Invoice — {portfolioItems.filter(i => i.category === "delivery").length} ตัวอย่าง</p>
-              </div>
-            </div>
-            <p className="text-neutral-500 text-sm mb-8 ml-13">ใบส่งของ ใบแจ้งหนี้ ใบส่งของชั่วคราว ออกแบบให้ใช้งานง่าย มีช่องลงนามครบ</p>
-            <PortfolioGallery items={portfolioItems.filter(i => i.category === "delivery")} />
-          </div>
-
-          {/* Business Forms Section */}
-          <div id="business-form" className="mb-16 scroll-mt-36">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-neutral-100 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-neutral-900">แบบฟอร์มธุรกิจ</h2>
-                <p className="text-neutral-500 text-sm">Business Forms — {portfolioItems.filter(i => i.category === "business-form").length} ตัวอย่าง</p>
-              </div>
-            </div>
-            <p className="text-neutral-500 text-sm mb-8 ml-13">ใบสั่งซื้อ ใบรายงานบริการ Guest Folio แบบฟอร์มสหกรณ์ และหนังสือรับรองภาษี</p>
-            <PortfolioGallery items={portfolioItems.filter(i => i.category === "business-form")} />
-          </div>
-        </div>
-      </section>
+      {/* Interactive Category Filter + Gallery */}
+      <PortfolioCategoryFilter categories={categories} items={portfolioItems} />
 
       {/* CTA */}
       <section className="py-16 lg:py-24 bg-neutral-50">
@@ -327,5 +237,3 @@ export default function PortfolioPage() {
     </>
   );
 }
-
-

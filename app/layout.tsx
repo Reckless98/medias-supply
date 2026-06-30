@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { type ReactNode } from "react";
 import { Noto_Sans_Thai, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
       "รับงานพิมพ์ คอมพิวเตอร์ฟอร์ม ออฟเซ็ท สติ๊กเกอร์ แบบฟอร์มธุรกิจ งานดีมีคุณภาพ ซื่อสัตย์ ตรงต่อเวลา ราคายุติธรรม โทร 081-922-6779",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/api/og",
         width: 1200,
         height: 630,
         alt: "P.S. MEDIAS SUPPLY CO., LTD. - โรงพิมพ์บริการงานพิมพ์ครบวงจร",
@@ -158,7 +159,7 @@ const jsonLd = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="th" className="scroll-smooth">

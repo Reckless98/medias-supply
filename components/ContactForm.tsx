@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useCallback } from "react";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 
 const LINE_OA_ID = "@p.s.mediasupply";
 
@@ -11,12 +12,13 @@ export default function ContactForm() {
     message: "",
   });
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const text = `สวัสดีครับ/ค่ะ\nชื่อ: ${formData.name}\nเบอร์โทร: ${formData.phone}\nรายละเอียด: ${formData.message}`;
-    const url = `https://line.me/R/oaMessage/${LINE_OA_ID}/?${encodeURIComponent(text)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
+  const { handleSubmit } = useFormSubmit(
+    useCallback(() => {
+      const text = `สวัสดีครับ/ค่ะ\nชื่อ: ${formData.name}\nเบอร์โทร: ${formData.phone}\nรายละเอียด: ${formData.message}`;
+      const url = `https://line.me/R/oaMessage/${LINE_OA_ID}/?${encodeURIComponent(text)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }, [formData])
+  );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" id="contact-form">

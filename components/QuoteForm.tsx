@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useCallback } from "react";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 
 const serviceOptions = [
   "พิมพ์ใบเสร็จรับเงิน",
@@ -23,15 +24,12 @@ export default function QuoteForm() {
     quantity: "",
     details: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("Quote form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormData({ name: "", company: "", phone: "", service: "", quantity: "", details: "" });
-  };
+  const { submitted, handleSubmit } = useFormSubmit(
+    useCallback(() => {
+      console.log("Quote form submitted:", formData);
+      setFormData({ name: "", company: "", phone: "", service: "", quantity: "", details: "" });
+    }, [formData])
+  );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" id="quote-form-fields">
